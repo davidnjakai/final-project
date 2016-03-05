@@ -1,4 +1,6 @@
-<!DOCTYPE HTML> 
+<?php
+   session_start();
+?>
 <html>
 <head>
 <style>
@@ -43,10 +45,10 @@ function test_input($data) {
 <h2>Welcome!</h2>
 <p><span class="error">* required field.</span></p>
 <form method="post" action="credentialstest.php"> 
-   ID: <input type="text" name="name" value="<?php echo $name;?>">
+   ID: <input type="text" name="name" value="<?php echo $name;?>" placeholder = "71234">
    <span class="error">* <?php echo $nameErr;?></span>
    <br><br>
-   Password: <input type="password" name="password" value="<?php echo $password;?>">
+   Password: <input type="password" name="password" value="<?php echo $password;?>" placeholder = "password..." >
    <span class="error">* <?php echo $passwordErr;?></span>
    <br><br>
    domain:

@@ -1,7 +1,6 @@
 <?php
 include "../connection.php";
 $filehandle=fopen("../timetables/Testtimetable.csv","r");
-//print "<table border=1>";
 $someline=fgetcsv($filehandle,1024);
 $someline2=fgetcsv($filehandle,1024);
 while(!feof($filehandle)){
@@ -9,12 +8,16 @@ $line=fgetcsv($filehandle,1024);
 $line2=fgetcsv($filehandle,1024);
 $line3=fgetcsv($filehandle,1024);
 //print("<tr><td>".$line[0]."</td><td>".$line[1]."</td><td>".$line[2]."</td><td>".$line[3]."</td><td>".$line[4]."</td><td>".$line[5]."</td><td>".$line[6]."</td><td>".$line[7]."</td><td>".$line[8]."</td><td>".$line[9]."</td></tr>");
-//print "</table>";
 for($x=1;$x<10;$x++) {	
 	if($line3[$x]!=$line3[$x-1] && $line3[$x]!=""){
 		$startTime=getStartTime($x);
 		$room=$line[$x];
 		$unit=$line3[$x];
+		$staffName=$line2[$x];
+		$SQLLects="Select staff_no from lecturers WHERE staff_name = '".$staffName."';";
+		$res=mysqli_query($SQLLects);
+		$myarray=mysqli_fetch_assoc($res);
+		$staffNo=$myarray['staff_no'];
 		if($line3[$x]!=$line3[$x+1]){
 			$endTime=getEndTime($x);	
 		}
@@ -24,7 +27,7 @@ for($x=1;$x<10;$x++) {
 		elseif ($line3[$x]!=$line3[$x+3]) {
 			$endTime=getEndTime($x+2);
 		}
-		$SQL = "INSERT INTO schedule (sch_id, start_time, end_time, room_id, unit_id, course_id, reserved, confimed, staff_no) VALUES (344, '".$startTime."', '".$endTime."', '".$room."', '".$unit."', 'BBIT1A', 0, 0, '1232');";
+		$SQL = "INSERT INTO schedule (start_time, end_time, room_id, unit_id, course_id, reserved, confimed, staff_no) VALUES ( '".$startTime."', '".$endTime."', '".$room."', '".$unit."', 'BBIT1A', 0, 0, '".$staffNo."';";
 		mysqli_query($db_handle,$SQL);	
 	}
 	

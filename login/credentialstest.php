@@ -14,6 +14,9 @@ $SQL = "SELECT * FROM administrators WHERE admin_id = '".$name."' AND admin_pass
 $result = mysqli_query($db_handle,$SQL);
 $numrows=mysqli_num_rows($result);  
 if($numrows>0){
+	$_SESSION['valid'] = true;
+    $_SESSION['timeout'] = time();
+    $_SESSION['username'] = $name;
 echo "<head>
 <meta http-equiv=\"refresh\" content=\"2; url=../interface/homepage.html\" />
 </head>
