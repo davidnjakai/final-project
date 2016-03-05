@@ -1,9 +1,10 @@
 <?php
+echo "<head><link rel=\"stylesheet\" type=\"text/css\" href=\"../css/mystyles.css\"></head>";
 include "../connection.php";
 $filehandle=fopen("../timetables/Testtimetable.csv","r");
 $someline=fgetcsv($filehandle,1024);
-$someline2=fgetcsv($filehandle,1024);
 while(!feof($filehandle)){
+$someline2=fgetcsv($filehandle,1024);
 $line=fgetcsv($filehandle,1024);
 $line2=fgetcsv($filehandle,1024);
 $line3=fgetcsv($filehandle,1024);
@@ -15,8 +16,9 @@ for($x=1;$x<10;$x++) {
 		$unit=$line3[$x];
 		$staffName=$line2[$x];
 		$SQLLects="Select staff_no from lecturers WHERE staff_name = '".$staffName."';";
-		$res=mysqli_query($SQLLects);
+		$res=mysqli_query($db_handle,$SQLLects);
 		$myarray=mysqli_fetch_assoc($res);
+
 		$staffNo=$myarray['staff_no'];
 		if($line3[$x]!=$line3[$x+1]){
 			$endTime=getEndTime($x);	
@@ -27,13 +29,30 @@ for($x=1;$x<10;$x++) {
 		elseif ($line3[$x]!=$line3[$x+3]) {
 			$endTime=getEndTime($x+2);
 		}
-		$SQL = "INSERT INTO schedule (start_time, end_time, room_id, unit_id, course_id, reserved, confimed, staff_no) VALUES ( '".$startTime."', '".$endTime."', '".$room."', '".$unit."', 'BBIT1A', 0, 0, '".$staffNo."';";
+		$SQL = "INSERT INTO schedule (start_time, end_time, room_id, unit_id, course_id, reserved, confimed, staff_no) VALUES ( '".$startTime."', '".$endTime."', '".$room."', '".$unit."', 'BBIT1A', 0, 0, '".$staffNo."')";
 		mysqli_query($db_handle,$SQL);	
 	}
 	
 }
 }
 fclose($filehandle);
+
+$filehandle2=fopen("../timetables/Testtimetable.csv","r");
+$titles=fgetcsv($filehandle2,1024);
+echo "<table border=1><tr> <caption>This Timetable has been added</caption>";
+for ($x=0; $x<10; $x++) { 
+	echo "<th>".$titles[$x]."</th>";
+}
+echo "</tr>";
+while (!feof($filehandle2)) { 
+	$myline=fgetcsv($filehandle2,1024);
+	echo "<tr>";
+	for ($x=0; $x < 10; $x++) { 
+		echo "<td>".$myline[$x]."</td>";
+}
+echo "</tr>";
+}
+echo "</table>";
 function getStartTime($myVal){
 if($myVal == 1){
 	$mytime = "2016-02-01 08:00:00";
@@ -95,5 +114,4 @@ if($myVal == 9){
 return $mytime;
 }
 mysqli_close($db_handle);
-//INSERT INTO `schedule` (`sch_id`, `start_time`, `end_time`, `room_id`, `unit_id`, `course_id`, `reserved`, `confimed`, `staff_no`) VALUES ('344', '2016-02-03 08:00:00', '2016-02-03 10:00:00', 'LT2', 'HED1102', 'BBIT1A', '0', '0', '5638');
 ?>

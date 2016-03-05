@@ -6,7 +6,7 @@
 </head>
 <body class="menulist">
 	<ul>
-		<a href="mainpage.html" target="mainpage"><li>home</li></a>
+		<a href="mainpage.php" target="mainpage"><li>home</li></a>
 		<a href="../displays/scheduledisplay.php" target="mainpage"><li>schedules</li></a>
 		<a href="../displays/roomsdisplay.php" target="mainpage"><li>rooms</li></a>
 		<a href="../displays/coursesdisplay.php" target="mainpage"><li>courses</li></a>

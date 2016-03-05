@@ -5,8 +5,8 @@
 <title>HTML Frames</title>
 </head>
 <frameset cols="20%,80%">
-   <frame name="menulist" src="menulist.html" />
-   <frame name="mainpage" src="mainpage.html" />
+   <frame name="menulist" src="menulist.php" />
+   <frame name="mainpage" src="mainpage.php" />
    <noframes>
    <body>
       Your browser does not support frames.
