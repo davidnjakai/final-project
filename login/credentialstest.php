@@ -1,5 +1,5 @@
 <?php
-include "loginpage.php";
+include "../index.php";
 include "../connection.php";
 if ($db_found) {
 if($domain=="lecturer"){ 

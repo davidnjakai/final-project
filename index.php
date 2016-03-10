@@ -10,7 +10,6 @@
 <body> 
 
 <?php
-// define variables and set to empty values
 $nameErr = $passwordErr = $domainErr = "";
 $name = $password = $domain = "";
 
@@ -44,7 +43,7 @@ function test_input($data) {
 <center>
 <h2>Welcome!</h2>
 <p><span class="error">* required field.</span></p>
-<form method="post" action="credentialstest.php"> 
+<form method="post" action="login/credentialstest.php"> 
    ID: <input type="text" name="name" value="<?php echo $name;?>" placeholder = "71234">
    <span class="error">* <?php echo $nameErr;?></span>
    <br><br>

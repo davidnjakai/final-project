@@ -2,7 +2,7 @@
 <html>
 <head>
 	<link rel="stylesheet" type="text/css" href="../css/mystyles.css">
-<title>HTML Frames</title>
+<title>LecRoom Manager</title>
 </head>
 <frameset cols="20%,80%">
    <frame name="menulist" src="menulist.php" />

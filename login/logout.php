@@ -5,5 +5,5 @@
    unset($_SESSION["valid"]);
    unset($_SESSION["timeout"]);
    echo 'Bye!';
-   header('Refresh: 2; URL = loginpage.php');
+   header('Refresh: 2; URL = ../index.php');
 ?>

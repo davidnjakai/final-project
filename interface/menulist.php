@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>menu list</title>
+<title>LecRoom Manager</title>
 <link rel="stylesheet" type="text/css" href="../css/mystyles.css">
 </head>
 <body class="menulist">
