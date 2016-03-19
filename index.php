@@ -23,7 +23,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
    if (empty($_POST["password"])) {
      $passwordErr = "password is required";
    } else {
-     $password = test_input($_POST["password"]);
+     $password = md5(test_input($_POST["password"]));
    }
 
    if (empty($_POST["domain"])) {
