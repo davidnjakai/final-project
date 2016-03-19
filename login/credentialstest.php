@@ -33,6 +33,7 @@ if($numrows>0){
     $_SESSION['timeout'] = time();
     $_SESSION['username'] = $name;
     $_SESSION['displayname']= $dispName;
+    $_SESSION['domain']=$domain;
 echo "<head>
 <meta http-equiv=\"refresh\" content=\"2; url=../interface/homepage.php\" />
 </head>
