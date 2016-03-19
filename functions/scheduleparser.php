@@ -1,20 +1,21 @@
 <?php
 echo "<head><link rel=\"stylesheet\" type=\"text/css\" href=\"../css/mystyles.css\"></head>";
 include "../connection.php";
-print "<form method=\"post\" action=\"scheduleparser.php\">
+print "<form method=\"post\" action=\"scheduleparser.php\" enctype=\"multipart/form-data\" >
 	Course:
 	<input type=\"text\" name=\"course\" value=\"\"><br>
   Add from this date...:
   <input type=\"date\" name=\"dateStart\" value=\"\"><br>
   ...to this date:
-  <input type=\"date\" name=\"dateFin\" value=\"\">
+  <input type=\"date\" name=\"dateFin\" value=\"\"><br>
+  <input type=\"file\" name=\"timetablefile\" /><br>
  <input type=\"submit\" name=\"add\" value=\"add\">
 </form>";
 if (isset($_POST['add'])){
 	$theDate=strtotime($_POST['dateStart']);
 	$theDate2=strtotime($_POST['dateFin']);
 	while ($theDate<=$theDate2) {
-$filehandle=fopen("../timetables/Testtimetable.csv","r");
+$filehandle=fopen($_FILES['timetablefile']['tmp_name'],'rb');
 $someline=fgetcsv($filehandle,1024);
 $course=$_POST['course'];
 while(!feof($filehandle)){
@@ -55,12 +56,10 @@ $theDate=$theDate+86400;
 $theDate=$theDate+86400;
 fclose($filehandle);
 }
-}
 
-
-$filehandle2=fopen("../timetables/Testtimetable.csv","r");
+$filehandle2=fopen($_FILES['timetablefile']['tmp_name'],'rb');
 $titles=fgetcsv($filehandle2,1024);
-echo "<table border=1><tr> <caption>This Timetable has been added</caption>";
+echo "<table border=1><tr> <caption>This Timetable has been added for ".$_POST['course']."</caption>";
 for ($x=0; $x<10; $x++) { 
 	echo "<th>".$titles[$x]."</th>";
 }
@@ -74,6 +73,8 @@ while (!feof($filehandle2)) {
 echo "</tr>";
 }
 echo "</table>";
+fclose($filehandle2);
+}
 function getStartTime($myVal){
 return ($myVal+7)*3600;
 }
