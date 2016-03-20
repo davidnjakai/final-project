@@ -28,10 +28,20 @@ $eTime=$_POST['etime'];
 $room=test_input($_POST['room']);
 $course=test_input($_POST['course']);
 $unit=test_input($_POST['unit']);
+$SQLCHECK="SELECT * FROM schedule WHERE room_id = '".$room."' AND ((start_time <= '".$sTime."' AND end_time >= '".$sTime."')
+OR (start_time < '".$eTime."' AND end_time >= '".$eTime."')
+OR (start_time >= '".$sTime."' AND end_time <= '".$eTime."'));";
+$result = mysqli_query($db_handle,$SQLCHECK);
+if(mysqli_num_rows($result)==0){//avoid conflicting schedules
 $SQL="INSERT INTO schedule (start_time,end_time,room_id,unit_id,course_id,reserved,confimed,staff_no)
 VALUES ('".$sTime."','".$eTime."','".$room."','".$unit."','".$course."',0,0,1234);";
 mysqli_query($db_handle,$SQL);
 echo "schedule added";
+}
+else{
+  $db_field=mysqli_fetch_assoc($result);
+  echo "Sorry, this arrangement will conflict with schedule number ".$db_field['sch_id'].". Check schedules for more info";
+}
 }
 ?>
 </html>
