@@ -1,7 +1,9 @@
 <?php
 include "../connection.php";
-include "../functions/sessiontracker.php";
 session_start();
+if(!isset($_SESSION['username'])){
+    header("Location: ../index.php");
+   }
 ?>
 <html>
 <head>

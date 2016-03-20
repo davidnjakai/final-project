@@ -1,6 +1,9 @@
 <?php
 include "../index.php";
 include "../connection.php";
+echo "<head>
+<link rel=\"stylesheet\" type=\"text/css\" href=\"../css/mystyles.css\">
+</head>";
 if ($db_found) {
 if($domain=="lecturer"){ 
 $SQL = "SELECT * FROM lecturers WHERE staff_no = '".$name."' AND staff_password= '".$password."'"; 
