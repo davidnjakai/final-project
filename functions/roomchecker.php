@@ -10,10 +10,10 @@ print "<body class=\"mainpage\"><form method=\"post\" action=\"roomchecker.php\"
 </form>
 ";
 if ( isset( $_POST['check'] ) ) {
-$mytime=$_POST['date'];
+$mytime=date('Y-m-d H:i:s',strtotime($_POST['date']));
 }
 else{
-$mytime=date("Y-m-d H:i:s");
+$mytime=date('Y-m-d H:i:s',time());
 }
 print "The following classes are in session at this time(".$mytime.")";
 $SQL="SELECT * FROM schedule WHERE start_time < '".$mytime."' AND end_time > '".$mytime."'";
