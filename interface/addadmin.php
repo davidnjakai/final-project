@@ -2,6 +2,9 @@
 include "../connection.php";
 ?>
 <html>
+<head>
+  <link rel="stylesheet" type="text/css" href="../css/mystyles.css">
+</head>
 <form method="post" action="addadmin.php">
 	Admin ID:<br>
   <input type="text" name="id" value=""><br>

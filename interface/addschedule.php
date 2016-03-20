@@ -3,6 +3,9 @@ include "../connection.php";
 session_start();
 ?>
 <html>
+<head>
+  <link rel="stylesheet" type="text/css" href="../css/mystyles.css">
+</head>
 <form method="post" action="addschedule.php">
 	Start Time:<br>
   <input type="datetime-local" name="stime" value=""><br>

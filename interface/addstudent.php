@@ -2,6 +2,9 @@
 include "../connection.php";
 ?>
 <html>
+<head>
+  <link rel="stylesheet" type="text/css" href="../css/mystyles.css">
+</head>
 <form method="post" action="addstudent.php">
 	Adm No:<br>
   <input type="text" name  ="admno" value=""><br>

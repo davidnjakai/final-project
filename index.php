@@ -6,6 +6,7 @@
 <style>
 .error {color: #FF0000;}
 </style>
+<link rel="stylesheet" type="text/css" href="css/mystyles.css">
 </head>
 <body> 
 
