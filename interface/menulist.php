@@ -1,4 +1,5 @@
 <?php
+include "../functions/sessiontracker.php";
    session_start();
 ?>
 <html>

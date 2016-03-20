@@ -1,4 +1,5 @@
 <?php
+include "../functions/sessiontracker.php";
 include "../connection.php";
 print "<head>
 	<link rel=\"stylesheet\" type=\"text/css\" href=\"../css/mystyles.css\">

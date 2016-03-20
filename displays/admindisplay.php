@@ -1,3 +1,6 @@
+<?php
+include "../functions/sessiontracker.php";
+?>
 <html> 
 <head> 
 <title>ADMINS</title>

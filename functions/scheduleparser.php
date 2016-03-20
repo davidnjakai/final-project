@@ -1,5 +1,6 @@
 <?php
 echo "<head><link rel=\"stylesheet\" type=\"text/css\" href=\"../css/mystyles.css\"></head>";
+include "../functions/sessiontracker.php";
 include "../connection.php";
 print "<form method=\"post\" action=\"scheduleparser.php\" enctype=\"multipart/form-data\" >
 	Course:

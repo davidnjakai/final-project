@@ -41,6 +41,9 @@ echo "<head>
 ";
 }
 else{
+	echo "<head>
+<meta http-equiv=\"refresh\" content=\"2; url=../interface/homepage.php\" />
+</head>";
 echo  "<center>invalid user details</center>";
 }
 mysqli_close($db_handle);

@@ -1,4 +1,6 @@
-<!DOCTYPE html>
+<?php
+include "../functions/sessiontracker.php";
+?>
 <html>
 <head>
 	<link rel="stylesheet" type="text/css" href="../css/mystyles.css">
