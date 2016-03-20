@@ -45,7 +45,7 @@ for($x=1;$x<10;$x++) {
 		}
 		$ourval1=date('Y-m-d H:i:s',$startTime);
 		$ourval2=date('Y-m-d H:i:s',$endTime);
-		$SQL = "INSERT INTO schedule (start_time, end_time, room_id, unit_id, course_id, reserved, confimed, staff_no) VALUES ( '".$ourval1."', '".$ourval2."', '".$room."', '".$unit."', '".$course."', 0, 0, '".$staffNo."')";
+		$SQL = "INSERT INTO schedule (start_time, end_time, room_id, unit_id, course_id, reserved, staff_no) VALUES ( '".$ourval1."', '".$ourval2."', '".$room."', '".$unit."', '".$course."', 0, '".$staffNo."')";
 		//echo $SQL;
 		mysqli_query($db_handle,$SQL);	
 	}

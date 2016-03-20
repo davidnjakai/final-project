@@ -27,7 +27,6 @@ print "<tr>
 <th>unit_id</th>
 <th>course_id</th>
 <th>reserved</th>
-<th>confimed</th>
 <th>staff_no</th>
 </tr>
 ";
@@ -40,7 +39,6 @@ while($db_field=mysqli_fetch_assoc($result)){
 	print "<td>".$db_field['unit_id']."</td>";
 	print "<td>".$db_field['course_id']."</td>";
 	print "<td>".$db_field['reserved']."</td>";
-	print "<td>".$db_field['confimed']."</td>";
 	print "<td>".$db_field['staff_no']."</td>";
 	print "</tr>";
 	}

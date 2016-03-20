@@ -33,8 +33,8 @@ OR (start_time < '".$eTime."' AND end_time >= '".$eTime."')
 OR (start_time >= '".$sTime."' AND end_time <= '".$eTime."'));";
 $result = mysqli_query($db_handle,$SQLCHECK);
 if(mysqli_num_rows($result)==0){//avoid conflicting schedules
-$SQL="INSERT INTO schedule (start_time,end_time,room_id,unit_id,course_id,reserved,confimed,staff_no)
-VALUES ('".$sTime."','".$eTime."','".$room."','".$unit."','".$course."',0,0,1234);";
+$SQL="INSERT INTO schedule (start_time,end_time,room_id,unit_id,course_id,reserved,staff_no)
+VALUES ('".$sTime."','".$eTime."','".$room."','".$unit."','".$course."',1,1234);";
 mysqli_query($db_handle,$SQL);
 echo "schedule added";
 }
