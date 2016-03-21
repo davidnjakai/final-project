@@ -21,6 +21,7 @@ print "<tr>
 <th>email</th>
 <th>phone</th>
 <th>password</th>
+<th>rep</th>
 </tr>
 ";
 while($db_field=mysqli_fetch_assoc($result)){
@@ -33,6 +34,7 @@ while($db_field=mysqli_fetch_assoc($result)){
 	print "<td>".$db_field['stud_email']."</td>";
 	print "<td>".$db_field['stud_phone']."</td>";
 	print "<td>".$db_field['stud_password']."</td>";
+	print "<td>".$db_field['privileged']."</td>";
 	print "</tr>";
 	}
 	print "</table>";

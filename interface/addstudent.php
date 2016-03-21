@@ -23,6 +23,8 @@ Email:<br>
   <input type="text" name="phone" value=""><br>
 Password:<br>
   <input type="password" name="pass" value=""><br><br>
+  Representative:
+  <input type="checkbox" name="rep" value=1><br><br>
   <input type="submit" name = "add" value="ADD"><br>
   </form>
 <?php
@@ -41,8 +43,9 @@ $dob=test_input($_POST['dob']);
 $email=test_input($_POST['email']);
 $phone=test_input($_POST['phone']);
 $pass=md5(test_input($_POST['pass']));
-$SQL="INSERT INTO students (stud_id,stud_surname,stud_onames,stud_course,stud_dob,stud_email,stud_phone,stud_password)
-VALUES ('".$admNo."','".$sName."','".$oNames."','".$course."','".$dob."','".$email."','".$phone."','".$pass."');";
+$priv=$_POST['rep'];
+$SQL="INSERT INTO students (stud_id,stud_surname,stud_onames,stud_course,stud_dob,stud_email,stud_phone,stud_password,privileged)
+VALUES ('".$admNo."','".$sName."','".$oNames."','".$course."','".$dob."','".$email."','".$phone."','".$pass."',".$priv.");";
 mysqli_query($db_handle,$SQL);
 echo "student added";
 }

@@ -40,8 +40,17 @@ OR (start_time < '".$eTime."' AND end_time >= '".$eTime."')
 OR (start_time >= '".$sTime."' AND end_time <= '".$eTime."'));";
 $result = mysqli_query($db_handle,$SQLCHECK);
 if(mysqli_num_rows($result)==0){//avoid conflicting schedules
+  if($_SESSION['domain']=="lecturer"){
+    $staff_no=$_SESSION['username'];
+  }
+  elseif ($_SESSION['domain']=="student") {
+    $LECTSQL="SELECT DISTINCT staff_no FROM schedule WHERE unit_id = '".$unit."' AND course_id = '".$course."';";
+    $res=mysqli_query($db_handle,$LECTSQL);
+    $lectarray=mysqli_fetch_assoc($res);
+    $staff_no=$lectarray['staff_no'];
+  }
 $SQL="INSERT INTO schedule (start_time,end_time,room_id,unit_id,course_id,reserved,staff_no)
-VALUES ('".$sTime."','".$eTime."','".$room."','".$unit."','".$course."',1,".$_SESSION['username'].");";
+VALUES ('".$sTime."','".$eTime."','".$room."','".$unit."','".$course."',1,".$staff_no.");";
 mysqli_query($db_handle,$SQL);
 echo "schedule added";
 }

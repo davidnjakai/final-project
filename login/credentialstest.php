@@ -14,10 +14,11 @@ $dispName=$myarr['staff_name'];
 } 
 else if($domain=="student"){ 
 $SQL = "SELECT * FROM students WHERE stud_id = '".$name."' AND stud_password= '".$password."'";
-$SQL2 = "SELECT stud_surname FROM students WHERE stud_id = '".$name."';";
+$SQL2 = "SELECT stud_surname,privileged FROM students WHERE stud_id = '".$name."';";
 $myres=mysqli_query($db_handle,$SQL2);
 $myarr=mysqli_fetch_assoc($myres);
 $dispName=$myarr['stud_surname'];
+$priv=$myarr['privileged'];
 } 
 else if($domain=="admin"){ 
 $SQL = "SELECT * FROM administrators WHERE admin_id = '".$name."' AND admin_password= '".$password."'"; 
@@ -37,6 +38,9 @@ if($numrows>0){
     $_SESSION['username'] = $name;
     $_SESSION['displayname']= $dispName;
     $_SESSION['domain']=$domain;
+    if($_SESSION['domain']=="student"){
+    	$_SESSION['priv']=$priv;
+    }
 echo "<head>
 <meta http-equiv=\"refresh\" content=\"2; url=../interface/homepage.php\" />
 </head>

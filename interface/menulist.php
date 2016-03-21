@@ -25,7 +25,7 @@
 			echo "<a href=\"addschedule.php\" target=\"mainpage\"><li>add schedule</li></a>";
 			echo "<a href=\"../functions/scheduleparser.php\" target=\"mainpage\"><li>add timetable</li></a>";
 		}
-		elseif ($_SESSION['domain']=="lecturer") {
+		elseif ($_SESSION['domain']=="lecturer" || $_SESSION['priv']==1) {
 			echo "<a href=\"addschedule.php\" target=\"mainpage\"><li>add schedule</li></a>";		}
 		?>
 	</ul>
