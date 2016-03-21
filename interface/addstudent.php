@@ -47,7 +47,18 @@ $priv=$_POST['rep'];
 $SQL="INSERT INTO students (stud_id,stud_surname,stud_onames,stud_course,stud_dob,stud_email,stud_phone,stud_password,privileged)
 VALUES ('".$admNo."','".$sName."','".$oNames."','".$course."','".$dob."','".$email."','".$phone."','".$pass."',".$priv.");";
 mysqli_query($db_handle,$SQL);
+$SQLCHECK="SELECT * FROM students WHERE stud_id = ".$admNo." AND stud_password = '".$pass."';";
+$checkres=mysqli_query($db_handle,$SQLCHECK);
+$numrows=mysqli_num_rows($checkres);
+if($numrows>0){
 echo "student added";
+  }
+  else{
+    echo "an error occurred when adding, please try again";
+    echo "<head>
+<meta http-equiv=\"refresh\" content=\"2; url=addstudent.php\" />
+</head>";
+  }
 }
 ?>
 </html>

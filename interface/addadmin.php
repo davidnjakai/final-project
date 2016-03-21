@@ -28,9 +28,19 @@ $name=test_input($_POST['name']);
 $pass=md5(test_input($_POST['pass']));
 $SQL="INSERT INTO administrators (admin_id,admin_name,admin_password)
 VALUES (".$id.",'".$name."','".$pass."');";
-echo $SQL;
 mysqli_query($db_handle,$SQL);
+$SQLCHECK="SELECT * FROM administrators WHERE admin_id = ".$id." AND admin_password = '".$pass."';";
+$checkres=mysqli_query($db_handle,$SQLCHECK);
+$numrows=mysqli_num_rows($checkres);
+if($numrows>0){
 echo "administrator added";
+  }
+  else{
+    echo "an error occurred when adding, please try again";
+    echo "<head>
+<meta http-equiv=\"refresh\" content=\"20; url=addadmin.php\" />
+</head>";
+  }
 }
 ?>
 </html>

@@ -34,9 +34,19 @@ $phone=test_input($_POST['phone']);
 $pass=md5(test_input($_POST['pass']));
 $SQL="INSERT INTO lecturers (staff_no,staff_name,staff_email,staff_phone,staff_password)
 VALUES (".$staffNo.",'".$name."','".$email."',".$phone.",'".$pass."');";
-echo $SQL;
 mysqli_query($db_handle,$SQL);
+$SQLCHECK="SELECT * FROM lecturers WHERE staff_no = ".$staffNo." AND staff_password = '".$pass."';";
+$checkres=mysqli_query($db_handle,$SQLCHECK);
+$numrows=mysqli_num_rows($checkres);
+if($numrows>0){
 echo "lecturer added";
+  }
+  else{
+    echo "an error occurred when adding, please try again";
+    echo "<head>
+<meta http-equiv=\"refresh\" content=\"2; url=addlect.php\" />
+</head>";
+  }
 }
 ?>
 </html>

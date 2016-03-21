@@ -52,7 +52,18 @@ if(mysqli_num_rows($result)==0){//avoid conflicting schedules
 $SQL="INSERT INTO schedule (start_time,end_time,room_id,unit_id,course_id,reserved,staff_no)
 VALUES ('".$sTime."','".$eTime."','".$room."','".$unit."','".$course."',1,".$staff_no.");";
 mysqli_query($db_handle,$SQL);
+$SQLCHECK="SELECT * FROM schedule WHERE start_time = '".$sTime."' AND end_time = '".$eTime."' AND room_id = '".$room."';";
+$checkres=mysqli_query($db_handle,$SQLCHECK);
+$numrows=mysqli_num_rows($checkres);
+if($numrows>0){
 echo "schedule added";
+  }
+  else{
+    echo "an error occurred when adding, please try again";
+    echo "<head>
+<meta http-equiv=\"refresh\" content=\"2; url=addschedule.php\" />
+</head>";
+  }
 }
 else{
   $db_field=mysqli_fetch_assoc($result);
