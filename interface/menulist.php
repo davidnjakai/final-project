@@ -23,6 +23,7 @@
 			echo "<a href=\"addlect.php\" target=\"mainpage\"><li>add lecturer</li></a>";
 			echo "<a href=\"addadmin.php\" target=\"mainpage\"><li>add admin</li></a>";
 			echo "<a href=\"addschedule.php\" target=\"mainpage\"><li>add schedule</li></a>";
+			echo "<a href=\"../functions/scheduleparser.php\" target=\"mainpage\"><li>add timetable</li></a>";
 		}
 		elseif ($_SESSION['domain']=="lecturer") {
 			echo "<a href=\"addschedule.php\" target=\"mainpage\"><li>add schedule</li></a>";		}
